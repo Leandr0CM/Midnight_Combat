@@ -839,18 +839,70 @@ footer {
    13. RESPONSIVIDADE (MOBILE / TELAS MENORES)
 ========================================= */
 @media(max-width: 768px) {
+    /* Ajustes Gerais de Espaçamento e Tipografia */
+    .container { padding: 60px 15px; } /* Reduz espaços gigantes das bordas */
+    .section-title { font-size: 2rem; }
+    .section-desc { font-size: 1.1rem; margin-bottom: 30px; }
+    
     /* Navbar e Banner */
-    .nav-links { display: none; }
-    h1.glitch { font-size: 2rem; }
+    nav { padding: 15px 20px; justify-content: center; }
+    .logo { position: relative; left: 0; } /* Centraliza a logo no celular */
+    .nav-links { display: none; } /* Mantém o menu oculto para não quebrar a tela */
+    h1.glitch { font-size: 2.2rem; line-height: 1.2; }
+    .subtitle { font-size: 1.2rem; height: auto; }
+    .hero-logo { width: 250px; }
 
     /* Seção O Esporte */
-    .combat-content { flex-direction: column; }
-    .combat-image { max-width: 100%; margin-top: 10px; }
+    .combat-content { flex-direction: column; text-align: center; }
+    .combat-text p { text-align: left; font-size: 1.1rem; }
+    .combat-image { max-width: 100%; margin-top: 20px; }
 
-    /* Frota / Carrossel */
-    .robot-showcase { flex-direction: column; }
+    /* CARROSSEL NATIVO PARA A EQUIPE (Arrastar com o dedo) */
+    .cards-grid { 
+        display: flex; /* Muda de Grid para Flex */
+        flex-wrap: nowrap; /* Impede os cards de quebrarem a linha */
+        overflow-x: auto; /* Permite rolagem horizontal */
+        scroll-snap-type: x mandatory; /* Efeito de encaixe magnético do card */
+        padding-bottom: 20px; /* Dá espaço para a barra de rolagem */
+        gap: 15px; 
+        -webkit-overflow-scrolling: touch; /* Deixa o deslizar suave no iPhone */
+    }
+    
+    /* Estilo da barrinha de rolagem no celular */
+    .cards-grid::-webkit-scrollbar { height: 6px; }
+    .cards-grid::-webkit-scrollbar-track { background: #111; border-radius: 4px; }
+    .cards-grid::-webkit-scrollbar-thumb { background: var(--red-main); border-radius: 4px; }
+    
+    .tilt-card {
+        flex: 0 0 85%; /* O card ocupa 85% da tela, deixando o próximo aparecer um pouquinho para induzir o clique */
+        scroll-snap-align: center; /* Centraliza o card quando a pessoa solta o dedo */
+        margin: 0; 
+    }
+
+    /* Frota / Carrossel de Robôs */
+    .robot-showcase { flex-direction: column; padding: 20px; text-align: center; }
+    .robot-info h3 { font-size: 2.2rem; }
+    .carousel-container { padding-left: 45px; padding-right: 45px; } /* Ajusta o corredor das setas */
     .carousel-btn { padding: 10px; font-size: 18px; }
+    .tech-list li { text-align: left; font-size: 1rem; } /* Mantém a lista técnica na esquerda para leitura */
+    
+    /* Vitórias */
+    .achievement-card { padding: 20px; }
+    .victory-img-container { height: 180px; }
+    .gold-tier h3 { font-size: 1.3rem; }
+    .achievement-card p { font-size: 1rem; }
 
     /* Flexibilidade e Patrocínio */
     .flex-columns { flex-direction: column; gap: 20px; }
+    .flex-col { padding: 20px 15px; }
+    .flex-col li { font-size: 1rem; }
+    
+    /* Botões Finais de Contato */
+    .contact-actions { flex-direction: column; align-items: center; gap: 15px; }
+    .contact-actions .btn { 
+        width: 100%; 
+        max-width: 320px; /* Impede que o botão fique largo demais */
+        font-size: 0.85rem; 
+        padding: 15px 10px; 
+    }
 }
