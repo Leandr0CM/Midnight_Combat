@@ -1044,4 +1044,22 @@ footer {
         font-size: 0.85rem;
         padding: 15px 10px;
     }
+    .sponsors-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .sponsor-card {
+        padding: 15px 10px;
+    }
+
+    .sponsor-img-placeholder {
+        background-color: #ffffff !important;
+        height: 80px;
+    }
+
+    .sponsor-card h4 {
+        font-size: 1rem;
+        margin-top: 10px;
+    }
 }
