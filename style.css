@@ -840,14 +840,21 @@ footer {
 ========================================= */
 @media(max-width: 768px) {
     /* Ajustes Gerais de Espaçamento e Tipografia */
-    .container { padding: 60px 15px; } /* Reduz espaços gigantes das bordas */
+    .container { padding: 60px 15px; } 
     .section-title { font-size: 2rem; }
     .section-desc { font-size: 1.1rem; margin-bottom: 30px; }
     
+    /* CORREÇÃO DO ESMAGAMENTO (Retângulos Finos) */
+    .static-card { 
+        padding: 25px 15px; /* Reduz radicalmente a "borda invisível" interna */
+        width: 100%; 
+        box-sizing: border-box; 
+    }
+
     /* Navbar e Banner */
     nav { padding: 15px 20px; justify-content: center; }
-    .logo { position: relative; left: 0; } /* Centraliza a logo no celular */
-    .nav-links { display: none; } /* Mantém o menu oculto para não quebrar a tela */
+    .logo { position: relative; left: 0; } 
+    .nav-links { display: none; } 
     h1.glitch { font-size: 2.2rem; line-height: 1.2; }
     .subtitle { font-size: 1.2rem; height: auto; }
     .hero-logo { width: 250px; }
@@ -859,49 +866,56 @@ footer {
 
     /* CARROSSEL NATIVO PARA A EQUIPE (Arrastar com o dedo) */
     .cards-grid { 
-        display: flex; /* Muda de Grid para Flex */
-        flex-wrap: nowrap; /* Impede os cards de quebrarem a linha */
-        overflow-x: auto; /* Permite rolagem horizontal */
-        scroll-snap-type: x mandatory; /* Efeito de encaixe magnético do card */
-        padding-bottom: 20px; /* Dá espaço para a barra de rolagem */
+        display: flex; 
+        flex-wrap: nowrap; 
+        overflow-x: auto; 
+        scroll-snap-type: x mandatory; 
+        padding-bottom: 20px; 
         gap: 15px; 
-        -webkit-overflow-scrolling: touch; /* Deixa o deslizar suave no iPhone */
+        -webkit-overflow-scrolling: touch; 
     }
     
-    /* Estilo da barrinha de rolagem no celular */
     .cards-grid::-webkit-scrollbar { height: 6px; }
     .cards-grid::-webkit-scrollbar-track { background: #111; border-radius: 4px; }
     .cards-grid::-webkit-scrollbar-thumb { background: var(--red-main); border-radius: 4px; }
     
     .tilt-card {
-        flex: 0 0 85%; /* O card ocupa 85% da tela, deixando o próximo aparecer um pouquinho para induzir o clique */
-        scroll-snap-align: center; /* Centraliza o card quando a pessoa solta o dedo */
+        flex: 0 0 85%; 
+        scroll-snap-align: center; 
         margin: 0; 
     }
 
-    /* Frota / Carrossel de Robôs */
-    .robot-showcase { flex-direction: column; padding: 20px; text-align: center; }
-    .robot-info h3 { font-size: 2.2rem; }
-    .carousel-container { padding-left: 45px; padding-right: 45px; } /* Ajusta o corredor das setas */
-    .carousel-btn { padding: 10px; font-size: 18px; }
-    .tech-list li { text-align: left; font-size: 1rem; } /* Mantém a lista técnica na esquerda para leitura */
+    /* FROTA / CARROSSEL DE ROBÔS (Fim do esmagamento) */
+    .robot-showcase { flex-direction: column; text-align: center; margin: 0; padding: 20px 10px; }
+    .robot-info h3 { font-size: 2rem; }
+    .tech-list li { text-align: left; font-size: 1rem; } 
     
+    /* Remove os corredores devoradores de espaço */
+    .carousel-container { padding-left: 0; padding-right: 0; } 
+    
+    /* Reposiciona e diminui levemente as setas para não cobrirem o texto */
+    .carousel-btn { padding: 8px 12px; font-size: 18px; background-color: rgba(10, 10, 10, 0.95); }
+    .carousel-btn.prev { left: -5px; } 
+    .carousel-btn.next { right: -5px; }
+
     /* Vitórias */
-    .achievement-card { padding: 20px; }
+    .achievement-card { padding: 20px 15px; }
     .victory-img-container { height: 180px; }
     .gold-tier h3 { font-size: 1.3rem; }
     .achievement-card p { font-size: 1rem; }
 
-    /* Flexibilidade e Patrocínio */
-    .flex-columns { flex-direction: column; gap: 20px; }
-    .flex-col { padding: 20px 15px; }
-    .flex-col li { font-size: 1rem; }
+    /* FLEXIBILIDADE E PATROCÍNIO (Card Apoie a Inovação respirando) */
+    .flex-columns { flex-direction: column; gap: 15px; margin-bottom: 15px; }
+    
+    /* Corta o padding massivo das caixinhas vermelhas que esmagavam as listas */
+    .flex-col { padding: 15px; } 
+    .flex-col li { font-size: 1rem; padding-left: 20px; margin-bottom: 10px; }
     
     /* Botões Finais de Contato */
     .contact-actions { flex-direction: column; align-items: center; gap: 15px; }
     .contact-actions .btn { 
         width: 100%; 
-        max-width: 320px; /* Impede que o botão fique largo demais */
+        max-width: 320px; 
         font-size: 0.85rem; 
         padding: 15px 10px; 
     }
