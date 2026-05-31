@@ -839,122 +839,209 @@ footer {
    13. RESPONSIVIDADE (MOBILE / TELAS MENORES)
 ========================================= */
 @media(max-width: 768px) {
-    /* CORREÇÃO DO ESPAÇO PRETO (Overflow) */
-    html, body { 
-        overflow-x: hidden !important; /* Impede a rolagem horizontal indesejada */
-        width: 100%; 
-        max-width: 100vw; 
-    }
-    
-    /* A regra de ouro que impede que bordas e paddings "inchem" os elementos */
-    *, *::before, *::after { 
-        box-sizing: border-box; 
+
+    html, body {
+        overflow-x: hidden !important;
+        width: 100%;
+        max-width: 100vw;
     }
 
-    /* Ajustes Gerais de Espaçamento e Tipografia */
-    .container { padding: 60px 15px; width: 100%; } 
-    .section-title { font-size: 2rem; }
-    .section-desc { font-size: 1.1rem; margin-bottom: 30px; }
-    
-    .static-card { 
-        padding: 25px 15px; 
-        width: 100%; 
+    *, *::before, *::after {
+        box-sizing: border-box;
     }
 
-    /* Navbar e Banner */
-    nav { padding: 15px 20px; justify-content: center; width: 100%; }
-    .logo { position: relative; left: 0; } 
-    .nav-links { display: none; } 
-    h1.glitch { font-size: 2.2rem; line-height: 1.2; }
-    .subtitle { font-size: 1.2rem; height: auto; }
-    .hero-logo { width: 250px; }
-
-    /* Seção O Esporte */
-    .combat-content { flex-direction: column; text-align: center; }
-    .combat-text p { text-align: left; font-size: 1.1rem; }
-    .combat-image { max-width: 100%; margin-top: 20px; }
-
-    /* CARROSSEL NATIVO PARA A EQUIPE (Irmandade) */
-    .cards-grid { 
-        display: flex; 
-        flex-wrap: nowrap; 
-        overflow-x: auto; 
-        scroll-snap-type: x mandatory; 
-        padding-bottom: 20px; 
-        gap: 15px; 
-        -webkit-overflow-scrolling: touch; 
+    /* Ajustes Gerais */
+    .container {
+        padding: 60px 15px;
         width: 100%;
     }
-    
-    .cards-grid::-webkit-scrollbar { height: 6px; }
-    .cards-grid::-webkit-scrollbar-track { background: #111; border-radius: 4px; }
-    .cards-grid::-webkit-scrollbar-thumb { background: var(--red-main); border-radius: 4px; }
-    
-    .tilt-card {
-        flex: 0 0 85%; 
-        scroll-snap-align: center; 
-        margin: 0; 
+
+    .section-title {
+        font-size: 2rem;
     }
 
-    /* NOVO CARROSSEL NATIVO PARA A FROTA (Robôs) */
-    .carousel-container { 
-        display: flex; 
-        overflow-x: auto; 
-        scroll-snap-type: x mandatory; 
-        padding-bottom: 20px; 
+    .section-desc {
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+    }
+
+    .static-card {
+        padding: 20px 15px;
+        width: 100%;
+    }
+
+    /* Navbar */
+    nav {
+        padding: 15px 20px;
+        justify-content: center;
+    }
+
+    .logo {
+        position: relative;
+        left: 0;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    /* Hero */
+    h1.glitch {
+        font-size: 2.2rem;
+        line-height: 1.2;
+    }
+
+    .subtitle {
+        font-size: 1.2rem;
+        height: auto;
+    }
+
+    .hero-logo {
+        width: 250px;
+    }
+
+    /* Sobre o Esporte */
+    .combat-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .combat-text p {
+        text-align: left;
+        font-size: 1.1rem;
+    }
+
+    .combat-image {
+        max-width: 100%;
+        margin-top: 20px;
+    }
+
+    /* Equipe */
+    .cards-grid {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
         gap: 15px;
-        -webkit-overflow-scrolling: touch; 
+        padding-bottom: 20px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .cards-grid::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .cards-grid::-webkit-scrollbar-thumb {
+        background: var(--red-main);
+        border-radius: 10px;
+    }
+
+    .tilt-card {
+        flex: 0 0 85%;
+        scroll-snap-align: center;
+    }
+
+    /* =====================================
+       FROTA
+       ===================================== */
+
+    .carousel-container {
+        display: block;
+        overflow: hidden;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .carousel-slide {
         width: 100%;
     }
-    
-/* Força os robôs a aparecerem lado a lado ocupando a tela toda */
-    .carousel-slide { 
-        display: block !important; 
-        flex: 0 0 100%; /* Mudou de 90% para 100% da largura */
-        scroll-snap-align: center; 
-        opacity: 1 !important; 
-        animation: none !important;
+
+    .robot-showcase {
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+        margin: 0;
+        padding: 20px 15px;
     }
 
-    /* Removemos as setas e os pontinhos para celular */
-    .carousel-btn, .carousel-dots { 
-        display: none !important; 
+    .robot-info {
+        width: 100%;
     }
 
-    /* Ajustes internos do card do robô no celular */
-    .robot-showcase { 
-        flex-direction: column; 
-        text-align: center; 
-        margin: 0; 
-        padding: 20px 15px; 
-        width: 100%; 
+    .robot-info h3 {
+        font-size: 2rem;
+        word-break: break-word;
     }
-    
-    .robot-info h3 { font-size: 2rem; }
-    .tech-list li { text-align: left; font-size: 1rem; } 
-    
-    /* Estilo da barra de rolagem para os Robôs (Dourada para diferenciar) */
-    .carousel-container::-webkit-scrollbar { height: 6px; }
-    .carousel-container::-webkit-scrollbar-track { background: #111; border-radius: 4px; }
-    .carousel-container::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
 
-    /* Vitórias */
-    .achievement-card { padding: 20px 15px; width: 100%; }
-    .victory-img-container { height: 180px; }
-    .gold-tier h3 { font-size: 1.3rem; }
-    .achievement-card p { font-size: 1rem; }
+    .tech-list {
+        padding-left: 0;
+    }
 
-    /* Flexibilidade e Patrocínio */
-    .flex-columns { flex-direction: column; gap: 15px; margin-bottom: 15px; }
-    .flex-col { padding: 15px; width: 100%; } 
-    .flex-col li { font-size: 1rem; padding-left: 20px; margin-bottom: 10px; }
-    
-    /* Botões Finais de Contato */
-    .contact-actions { flex-direction: column; align-items: center; gap: 15px; width: 100%; }
-    .contact-actions .btn { 
-        width: 100%; 
-        max-width: 320px; 
-        font-size: 0.85rem; 
-        padding: 15px 10px; 
+    .tech-list li {
+        text-align: left;
+        font-size: 1rem;
+    }
+
+    .robot-image-placeholder {
+        width: 100%;
+        padding: 10px 0 0 0;
+    }
+
+    .robot-image-placeholder img {
+        width: 100%;
+        max-width: 350px;
+        height: auto;
+    }
+
+    /* Mantém as setas visíveis */
+    .carousel-btn {
+        padding: 10px;
+        font-size: 18px;
+    }
+
+    /* Conquistas */
+    .achievement-card {
+        padding: 20px 15px;
+    }
+
+    .victory-img-container {
+        height: 180px;
+    }
+
+    .gold-tier h3 {
+        font-size: 1.3rem;
+    }
+
+    .achievement-card p {
+        font-size: 1rem;
+    }
+
+    /* Patrocínio */
+    .flex-columns {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .flex-col {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .flex-col li {
+        font-size: 1rem;
+    }
+
+    /* Contato */
+    .contact-actions {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .contact-actions .btn {
+        width: 100%;
+        max-width: 320px;
+        font-size: 0.85rem;
+        padding: 15px 10px;
     }
 }
