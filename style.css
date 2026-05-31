@@ -907,10 +907,10 @@ footer {
         width: 100%;
     }
     
-    /* Força os robôs a aparecerem lado a lado, anulando a ocultação do JS */
+/* Força os robôs a aparecerem lado a lado ocupando a tela toda */
     .carousel-slide { 
         display: block !important; 
-        flex: 0 0 90%; /* Deixa uma pontinha do próximo robô aparecendo */
+        flex: 0 0 100%; /* Mudou de 90% para 100% da largura */
         scroll-snap-align: center; 
         opacity: 1 !important; 
         animation: none !important;
