@@ -839,20 +839,30 @@ footer {
    13. RESPONSIVIDADE (MOBILE / TELAS MENORES)
 ========================================= */
 @media(max-width: 768px) {
-    /* Ajustes Gerais de Espaçamento e Tipografia */
-    .container { padding: 60px 15px; } 
-    .section-title { font-size: 2rem; }
-    .section-desc { font-size: 1.1rem; margin-bottom: 30px; }
-    
-    /* CORREÇÃO DO ESMAGAMENTO (Retângulos Finos) */
-    .static-card { 
-        padding: 25px 15px; /* Reduz radicalmente a "borda invisível" interna */
+    /* CORREÇÃO DO ESPAÇO PRETO (Overflow) */
+    html, body { 
+        overflow-x: hidden !important; /* Impede a rolagem horizontal indesejada */
         width: 100%; 
+        max-width: 100vw; 
+    }
+    
+    /* A regra de ouro que impede que bordas e paddings "inchem" os elementos */
+    *, *::before, *::after { 
         box-sizing: border-box; 
     }
 
+    /* Ajustes Gerais de Espaçamento e Tipografia */
+    .container { padding: 60px 15px; width: 100%; } 
+    .section-title { font-size: 2rem; }
+    .section-desc { font-size: 1.1rem; margin-bottom: 30px; }
+    
+    .static-card { 
+        padding: 25px 15px; 
+        width: 100%; 
+    }
+
     /* Navbar e Banner */
-    nav { padding: 15px 20px; justify-content: center; }
+    nav { padding: 15px 20px; justify-content: center; width: 100%; }
     .logo { position: relative; left: 0; } 
     .nav-links { display: none; } 
     h1.glitch { font-size: 2.2rem; line-height: 1.2; }
@@ -864,7 +874,7 @@ footer {
     .combat-text p { text-align: left; font-size: 1.1rem; }
     .combat-image { max-width: 100%; margin-top: 20px; }
 
-    /* CARROSSEL NATIVO PARA A EQUIPE (Arrastar com o dedo) */
+    /* CARROSSEL NATIVO PARA A EQUIPE (Irmandade) */
     .cards-grid { 
         display: flex; 
         flex-wrap: nowrap; 
@@ -873,6 +883,7 @@ footer {
         padding-bottom: 20px; 
         gap: 15px; 
         -webkit-overflow-scrolling: touch; 
+        width: 100%;
     }
     
     .cards-grid::-webkit-scrollbar { height: 6px; }
@@ -885,34 +896,61 @@ footer {
         margin: 0; 
     }
 
-    /* FROTA / CARROSSEL DE ROBÔS (Fim do esmagamento) */
-    .robot-showcase { flex-direction: column; text-align: center; margin: 0; padding: 20px 10px; }
+    /* NOVO CARROSSEL NATIVO PARA A FROTA (Robôs) */
+    .carousel-container { 
+        display: flex; 
+        overflow-x: auto; 
+        scroll-snap-type: x mandatory; 
+        padding-bottom: 20px; 
+        gap: 15px;
+        -webkit-overflow-scrolling: touch; 
+        width: 100%;
+    }
+    
+    /* Força os robôs a aparecerem lado a lado, anulando a ocultação do JS */
+    .carousel-slide { 
+        display: block !important; 
+        flex: 0 0 90%; /* Deixa uma pontinha do próximo robô aparecendo */
+        scroll-snap-align: center; 
+        opacity: 1 !important; 
+        animation: none !important;
+    }
+
+    /* Removemos as setas e os pontinhos para celular */
+    .carousel-btn, .carousel-dots { 
+        display: none !important; 
+    }
+
+    /* Ajustes internos do card do robô no celular */
+    .robot-showcase { 
+        flex-direction: column; 
+        text-align: center; 
+        margin: 0; 
+        padding: 20px 15px; 
+        width: 100%; 
+    }
+    
     .robot-info h3 { font-size: 2rem; }
     .tech-list li { text-align: left; font-size: 1rem; } 
     
-    /* Remove os corredores devoradores de espaço */
-    .carousel-container { padding-left: 0; padding-right: 0; } 
-    
-    /* Reposiciona e diminui levemente as setas para não cobrirem o texto */
-    .carousel-btn { padding: 8px 12px; font-size: 18px; background-color: rgba(10, 10, 10, 0.95); }
-    .carousel-btn.prev { left: -5px; } 
-    .carousel-btn.next { right: -5px; }
+    /* Estilo da barra de rolagem para os Robôs (Dourada para diferenciar) */
+    .carousel-container::-webkit-scrollbar { height: 6px; }
+    .carousel-container::-webkit-scrollbar-track { background: #111; border-radius: 4px; }
+    .carousel-container::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
 
     /* Vitórias */
-    .achievement-card { padding: 20px 15px; }
+    .achievement-card { padding: 20px 15px; width: 100%; }
     .victory-img-container { height: 180px; }
     .gold-tier h3 { font-size: 1.3rem; }
     .achievement-card p { font-size: 1rem; }
 
-    /* FLEXIBILIDADE E PATROCÍNIO (Card Apoie a Inovação respirando) */
+    /* Flexibilidade e Patrocínio */
     .flex-columns { flex-direction: column; gap: 15px; margin-bottom: 15px; }
-    
-    /* Corta o padding massivo das caixinhas vermelhas que esmagavam as listas */
-    .flex-col { padding: 15px; } 
+    .flex-col { padding: 15px; width: 100%; } 
     .flex-col li { font-size: 1rem; padding-left: 20px; margin-bottom: 10px; }
     
     /* Botões Finais de Contato */
-    .contact-actions { flex-direction: column; align-items: center; gap: 15px; }
+    .contact-actions { flex-direction: column; align-items: center; gap: 15px; width: 100%; }
     .contact-actions .btn { 
         width: 100%; 
         max-width: 320px; 
